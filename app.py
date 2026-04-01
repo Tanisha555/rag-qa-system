@@ -1,8 +1,6 @@
-# app.py
-# -----------------------------------------------------------
+
 # CLI interface for the RAG Q&A system
 # Run: python app.py
-# -----------------------------------------------------------
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -17,12 +15,12 @@ from rag_pipeline import (
 )
 
 
-# ── CONFIG ──────────────────────────────────────────────────
+#  CONFIG
 DOCUMENT_PATH = "data/ai_overview.txt"   # the document we'll ask questions about
-GROQ_API_KEY  = os.environ.get("GROQ_API_KEY", "")   # set as env variable (never hardcode!)
-GROQ_MODEL    = "llama-3.1-8b-instant"   # free Groq model (llama3-8b-8192 was decommissioned)
+GROQ_API_KEY  = os.environ.get("GROQ_API_KEY", "")   # set as env variable
+GROQ_MODEL    = "llama-3.1-8b-instant"  
 TOP_K_CHUNKS  = 3                        # how many chunks to retrieve per question
-# ────────────────────────────────────────────────────────────
+# 
 
 
 def main():
@@ -38,7 +36,7 @@ def main():
         print("Get a free key at: https://console.groq.com")
         return
 
-    # ── Build the pipeline ──────────────────────────────────
+    #  Build the pipeline 
     chunks       = load_and_split_document(DOCUMENT_PATH)
     vector_store = create_vector_store(chunks)
     rag_chain    = build_rag_chain(vector_store, GROQ_API_KEY, GROQ_MODEL, TOP_K_CHUNKS)
@@ -46,7 +44,7 @@ def main():
     print("\n[4/4] System ready! Type your question below.")
     print("      Commands: 'quit' to exit | 'eval' to toggle evaluation mode\n")
 
-    # ── Interactive Q&A loop ────────────────────────────────
+    #  Interactive Q&A loop 
     eval_mode = True   # show retrieved chunks and evaluation label prompt
 
     while True:
@@ -66,12 +64,12 @@ def main():
         answer, source_docs = ask_question(rag_chain, user_input)
 
         if eval_mode:
-            # Shows answer + retrieved chunks so you can manually label quality
+            # Shows answer , retrieved chunks so you can manually label quality
             evaluate_response(answer, source_docs)
         else:
             print(f"Answer: {answer}\n")
 
-        # Log this Q&A pair to a file (simulates AI data collection)
+        # Log this Q&A pair to a file 
         log_qa_pair(user_input, answer, source_docs, eval_mode)
 
 
