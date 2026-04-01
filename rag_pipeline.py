@@ -1,8 +1,7 @@
-# rag_pipeline.py
-# -----------------------------------------------------------
+
 # RAG (Retrieval-Augmented Generation) Pipeline
 # Uses: HuggingFace Embeddings + FAISS vector store + Groq LLM
-# -----------------------------------------------------------
+
 
 import os
 from langchain_community.document_loaders import TextLoader
