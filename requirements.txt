@@ -1,0 +1,5 @@
+langchain==0.3.25
+langchain-community==0.3.23
+langchain-huggingface==0.1.2
+langchain-groq==0.3.2
+sentence-transformers==3.4.1

@@ -1,0 +1,12 @@
+
+QUESTION: What is rag?
+ANSWER: Retrieval-Augmented Generation (RAG)
+CHUNKS_USED: 3
+EVALUATION_LABEL: [CORRECT / PARTIAL / INCORRECT / NO_ANSWER]
+------------------------------------------------------------
+
+QUESTION: correct
+ANSWER: RAG (Retrieval-Augmented Generation)
+CHUNKS_USED: 3
+EVALUATION_LABEL: [CORRECT / PARTIAL / INCORRECT / NO_ANSWER]
+------------------------------------------------------------

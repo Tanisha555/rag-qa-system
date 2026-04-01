@@ -1,0 +1,55 @@
+Introduction to Artificial Intelligence and Generative AI
+
+Artificial Intelligence (AI) refers to the simulation of human intelligence in machines that are programmed to think, learn, and problem-solve. AI systems are designed to perform tasks that typically require human intelligence, such as understanding language, recognizing patterns, making decisions, and generating content.
+
+Machine Learning and Its Role in AI
+
+Machine Learning (ML) is a subset of AI that enables systems to learn and improve from experience without being explicitly programmed. Instead of writing rules manually, ML models learn patterns from data. There are three main types of machine learning: supervised learning, unsupervised learning, and reinforcement learning.
+
+In supervised learning, a model is trained on labeled data, meaning each input has a corresponding correct output. Common examples include spam email detection and image classification. In unsupervised learning, the model finds hidden patterns in data without any labels, such as grouping customers by behavior. In reinforcement learning, an agent learns by interacting with an environment and receiving rewards or penalties.
+
+What is Generative AI?
+
+Generative AI refers to AI systems that can create new content such as text, images, audio, and video. Unlike traditional AI that classifies or predicts, generative models produce original outputs. Large Language Models (LLMs) like GPT, LLaMA, and Gemini are examples of generative AI that are trained on massive text datasets and can write essays, answer questions, generate code, and hold conversations.
+
+Generative AI is built on a model architecture called the Transformer, introduced by Google researchers in 2017. Transformers use a mechanism called self-attention, which allows the model to understand relationships between words in a sentence regardless of their distance from each other.
+
+Retrieval-Augmented Generation (RAG)
+
+Retrieval-Augmented Generation, or RAG, is a technique that combines information retrieval with text generation. Instead of relying solely on a language model's internal knowledge, RAG systems first search a document database to find relevant information, then use that information as context when generating an answer.
+
+A RAG pipeline has three main steps. First, documents are broken into smaller chunks and converted into vector embeddings. Second, when a user asks a question, the question is also converted into an embedding, and the most similar document chunks are retrieved using cosine similarity. Third, the retrieved chunks are inserted into the prompt as context, and the language model generates an answer based only on that context.
+
+RAG is especially useful because it reduces hallucinations (when an AI makes up facts), allows the system to use up-to-date or private documents, and makes the AI's answers more accurate and traceable.
+
+Prompt Engineering
+
+Prompt engineering is the practice of designing and optimizing the input text (called a prompt) given to a language model to get the best possible output. A well-designed prompt can dramatically improve the quality, accuracy, and relevance of the model's response.
+
+Common prompting techniques include zero-shot prompting, where you ask the model to perform a task without any examples; one-shot prompting, where you provide one example before the task; and few-shot prompting, where you provide multiple examples to guide the model. Another technique is chain-of-thought prompting, where you instruct the model to reason step by step before giving a final answer.
+
+System prompts are used to set the role and behavior of the AI. For example, telling the model "You are a helpful customer support assistant" before asking a question helps the model maintain a consistent tone and focus.
+
+Data Annotation and Labeling
+
+Data annotation is the process of labeling raw data so that machine learning models can learn from it. It is one of the most critical steps in building any AI system. Without high-quality labeled data, models cannot learn correctly.
+
+Types of data annotation include text classification (assigning categories to sentences), named entity recognition (identifying names, locations, and dates in text), sentiment annotation (labeling text as positive, negative, or neutral), and bounding box annotation (drawing boxes around objects in images for computer vision models).
+
+In Generative AI, a specific type of annotation called Reinforcement Learning from Human Feedback (RLHF) is used. Human annotators compare AI-generated responses and label which one is better, safer, or more accurate. This feedback is used to fine-tune models to behave in alignment with human preferences.
+
+Data quality is directly related to model quality. Annotators must follow detailed guidelines to ensure consistency. Common quality checks include inter-annotator agreement, where multiple annotators label the same data and their agreement is measured, and audit sampling, where a portion of labeled data is reviewed by senior annotators.
+
+Vector Embeddings and Similarity Search
+
+Vector embeddings are numerical representations of text. Every word, sentence, or document can be converted into a list of numbers (a vector) that captures its meaning. Words or sentences with similar meanings will have vectors that are close to each other in vector space.
+
+Cosine similarity is the most common method for comparing two vectors. It measures the angle between two vectors; a cosine similarity of 1.0 means the vectors are identical in direction (very similar meaning), while a value near 0 means they are unrelated.
+
+FAISS (Facebook AI Similarity Search) is an open-source library for efficient similarity search across millions of vectors. It is commonly used as the vector database in RAG pipelines to quickly find the most relevant document chunks for a given query.
+
+Challenges in Generative AI
+
+Despite rapid progress, generative AI faces several challenges. Hallucination is when a model generates false information confidently, which can be dangerous in medical or legal contexts. Bias occurs when a model produces outputs that reflect unfair stereotypes present in its training data. Privacy concerns arise when models are trained on data containing personal information.
+
+Evaluation of generative AI models is also difficult because traditional metrics like accuracy do not apply well to open-ended text generation. Human evaluation remains an important part of assessing model quality, which is why roles in AI data evaluation and annotation are critical in the AI industry.
