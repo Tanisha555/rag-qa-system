@@ -1,8 +1,7 @@
-# streamlit_app.py
-# -----------------------------------------------------------
+
 # Streamlit Chat UI for the RAG Q&A System
 # Run: streamlit run streamlit_app.py
-# -----------------------------------------------------------
+
 
 import os
 import streamlit as st
@@ -16,14 +15,14 @@ from rag_pipeline import (
 
 load_dotenv()
 
-# ── PAGE CONFIG ─────────────────────────────────────────────
+#  PAGE CONFIG 
 st.set_page_config(
     page_title="RAG Q&A System",
     page_icon="🔍",
     layout="centered"
 )
 
-# ── STYLES ──────────────────────────────────────────────────
+#  STYLES 
 st.markdown("""
 <style>
     .stChatMessage { border-radius: 12px; margin-bottom: 8px; }
@@ -53,12 +52,12 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# ── HEADER ──────────────────────────────────────────────────
+#  HEADER 
 st.title(" RAG-Based Q&A System")
 st.caption("Built with LangChain · FAISS · HuggingFace · Groq")
 st.divider()
 
-# ── SIDEBAR ─────────────────────────────────────────────────
+#  SIDEBAR 
 with st.sidebar:
     st.header("⚙️ Settings")
 
@@ -103,7 +102,7 @@ with st.sidebar:
 6.  LLM answers using chunks
 """)
 
-# ── LOAD PIPELINE (cached so it only runs once) ─────────────
+#  LOAD PIPELINE 
 @st.cache_resource(show_spinner="Building RAG pipeline... (only once)")
 def get_rag_chain(api_key, model, k, file_content=None):
     if file_content:
@@ -120,16 +119,16 @@ def get_rag_chain(api_key, model, k, file_content=None):
     chain        = build_rag_chain(vector_store, api_key, model, k)
     return chain
 
-# ── INIT CHAT HISTORY ───────────────────────────────────────
+#  INIT CHAT HISTORY 
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# ── VALIDATION ──────────────────────────────────────────────
+#  VALIDATION 
 if not groq_api_key:
     st.warning("👈 Enter your Groq API key in the sidebar to get started. Get one free at [console.groq.com](https://console.groq.com)")
     st.stop()
 
-# ── BUILD PIPELINE ──────────────────────────────────────────
+#  BUILD PIPELINE 
 file_content = None
 if uploaded_file:
     file_content = uploaded_file.read().decode("utf-8")
@@ -143,7 +142,7 @@ except Exception as e:
     st.error(f"Failed to build pipeline: {e}")
     st.stop()
 
-# ── DISPLAY CHAT HISTORY ────────────────────────────────────
+#  DISPLAY CHAT HISTORY 
 for msg in st.session_state.messages:
     with st.chat_message(msg["role"]):
         st.markdown(msg["content"])
@@ -164,7 +163,7 @@ for msg in st.session_state.messages:
                 <span class="eval-label no-answer"> No Answer</span>
             </div>""", unsafe_allow_html=True)
 
-# ── CHAT INPUT ──────────────────────────────────────────────
+#  CHAT INPUT 
 if prompt := st.chat_input("Ask a question about the document..."):
 
     # Show user message
