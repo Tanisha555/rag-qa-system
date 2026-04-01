@@ -59,7 +59,7 @@ st.divider()
 
 #  SIDEBAR 
 with st.sidebar:
-    st.header("⚙️ Settings")
+    st.header(" Settings")
 
     groq_api_key = st.text_input(
         "Groq API Key",
@@ -125,16 +125,16 @@ if "messages" not in st.session_state:
 
 #  VALIDATION 
 if not groq_api_key:
-    st.warning("👈 Enter your Groq API key in the sidebar to get started. Get one free at [console.groq.com](https://console.groq.com)")
+    st.warning(" Enter your Groq API key in the sidebar to get started. Get one free at [console.groq.com](https://console.groq.com)")
     st.stop()
 
 #  BUILD PIPELINE 
 file_content = None
 if uploaded_file:
     file_content = uploaded_file.read().decode("utf-8")
-    st.info(f"📄 Using uploaded file: **{uploaded_file.name}**")
+    st.info(f" Using uploaded file: **{uploaded_file.name}**")
 else:
-    st.info("📄 Using default document: **ai_overview.txt** (about AI & Gen AI concepts)")
+    st.info(" Using default document: **ai_overview.txt** (about AI & Gen AI concepts)")
 
 try:
     rag_chain = get_rag_chain(groq_api_key, model_choice, top_k, file_content)
@@ -148,7 +148,7 @@ for msg in st.session_state.messages:
         st.markdown(msg["content"])
 
         if msg["role"] == "assistant" and show_sources and "sources" in msg:
-            with st.expander(f"📚 Retrieved chunks ({len(msg['sources'])} used)"):
+            with st.expander(f" Retrieved chunks ({len(msg['sources'])} used)"):
                 for i, chunk in enumerate(msg["sources"], 1):
                     st.markdown(f"""<div class="source-box">
                         <strong>Chunk {i}</strong><br>{chunk[:400]}...
@@ -184,7 +184,7 @@ if prompt := st.chat_input("Ask a question about the document..."):
         st.markdown(answer)
 
         if show_sources and sources:
-            with st.expander(f"📚 Retrieved chunks ({len(sources)} used)"):
+            with st.expander(f" Retrieved chunks ({len(sources)} used)"):
                 for i, chunk in enumerate(sources, 1):
                     st.markdown(f"""<div class="source-box">
                         <strong>Chunk {i}</strong><br>{chunk[:400]}...
